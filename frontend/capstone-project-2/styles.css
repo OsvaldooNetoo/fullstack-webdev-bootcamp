@@ -1,0 +1,80 @@
+:root {
+  --nav-height: 64px;
+  --nav-bg: rgb(8, 2, 179);
+  --nav-bg-scrolled: rgba(255,255,255,0.95);
+  --nav-text-color: #ffffff;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding-top: var(--nav-height); /* evita que o conteúdo fique embaixo do menu */
+}
+
+/* Estilos do menu de navegação de barra fixa */
+.site-nav { 
+  position: fixed;
+  inset: 0 0 auto 0; /* top:0; left:0; right:0; */
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+  transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+  background: var(--nav-bg);
+  backdrop-filter: blur(6px); 
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.nav-inner {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  color: var(--nav-text-color);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* Menu */
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-menu a {
+  text-decoration: none;
+  color: var(--nav-text-color);
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  transition: color 0.15s ease, transform 0.15s ease, background 0.15s ease;
+}
+
+.nav-menu a:hover,
+.nav-menu a:focus {
+  color: #0b76ff;
+  transform: translateY(-3px);
+  background: rgba(11,118,255,0.06);
+}
+
+/* Estado quando a página é rolada */
+.site-nav.scrolled {
+  background: var(--nav-bg-scrolled);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  transform: translateY(0);
+}
+
+.site-nav.scrolled .nav-menu a,
+.site-nav.scrolled .brand {
+  color: #111;
+}
